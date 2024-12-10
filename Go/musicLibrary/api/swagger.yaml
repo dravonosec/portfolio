@@ -1,0 +1,40 @@
+openapi: 3.0.3
+info:
+  title: Music Library API
+  version: 1.0.0
+  description: API for managing music library
+paths:
+  /api/v1/songs:
+    post: 
+      summary: Add a new song to the library
+      description: Add a new song to the library.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Song' 
+      responses:
+        '201':
+          description: Song added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Song'
+        '400':
+          description: Invalid request
+        '500':
+          description: Server error
+
+
+
+components:
+  schemas:
+    Song:
+      type: object
+      properties:
+        group:
+          type: string
+        song:
+          type: string
+              
